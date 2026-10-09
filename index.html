@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:,">
+<style>
+  :root{color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;font:14px system-ui,sans-serif}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Joseph James Baritone</title>
+<meta name="description" content="Joseph James, Welsh baritone based in London, available for concerts and events across the UK, Europe and internationally. Weddings, conferences and talent management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: concert-programme editorial. Big Bodoni name against monochrome portraits; one bottle-green accent; repertoire as a printed index. */
+:root{
+  --bg:#F1F1EE; --surface:#E7E7E2; --ink:#151716; --muted:#5C615E; --line:#CDCFC9;
+  --accent:#1E4A38; --accent-ink:#F4F4F0; --photo-bg:#D9DAD5;
+  --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-body:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gut:clamp(16px,4vw,48px); --max:1240px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1110; --surface:#171A19; --ink:#ECEDE8; --muted:#9BA09C; --line:#2A2F2C;
+  --accent:#8EC3A8; --accent-ink:#0D1913; --photo-bg:#1B1F1D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1110; --surface:#171A19; --ink:#ECEDE8; --muted:#9BA09C; --line:#2A2F2C;
+  --accent:#8EC3A8; --accent-ink:#0D1913; --photo-bg:#1B1F1D; color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:500 15px/1 var(--f-body);letter-spacing:.02em;padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+.mark{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.mark b{font:500 22px/1 var(--f-display);letter-spacing:.01em}
+.mark i{font:400 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:14px;text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav .btn{padding:10px 16px;font-size:14px;color:var(--ink)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);font:500 14px var(--f-body);padding:8px 12px;cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px var(--gut) 20px}
+  .nav:not(.open){display:none}
+  .nav a{padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)}
+  .nav .btn{margin-top:14px;justify-content:center;border:1px solid var(--ink)}
+}
+
+/* Hero */
+.hero{padding-block:clamp(36px,6vw,80px) clamp(48px,7vw,96px)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:end}
+.hero-text{min-width:0}
+.hero h1{font-size:clamp(64px,12.5vw,176px);letter-spacing:-.02em;line-height:.86;margin-top:22px}
+.hero h1 em{display:block;font-style:italic;font-weight:400;padding-left:.42em}
+.hero .voice{display:flex;align-items:center;gap:14px;margin-top:28px;font:400 clamp(22px,2.4vw,30px)/1 var(--f-display);font-style:italic}
+.hero .voice::before{content:"";width:56px;height:1px;background:var(--ink)}
+.hero .lede{max-width:52ch;margin-top:26px;color:var(--muted);font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero figure{margin:0;position:relative;background:var(--photo-bg);overflow:hidden}
+.hero figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;animation:settle 1.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero figcaption{position:absolute;left:14px;bottom:12px;font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#F1F1EE;mix-blend-mode:difference}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero figure{max-width:520px}.hero figure img{aspect-ratio:1/1;object-position:50% 35%}}
+
+/* Press band */
+.press{border-block:1px solid var(--line);padding-block:clamp(36px,5vw,60px)}
+.press .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:center}
+.press .clef{font:400 clamp(70px,9vw,120px)/.8 var(--f-display);color:var(--accent)}
+.press blockquote{margin:0;font:italic 400 clamp(26px,3.6vw,46px)/1.15 var(--f-display);text-wrap:balance}
+.press cite{display:block;margin-top:16px;font:normal 400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:600px){.press .wrap{grid-template-columns:1fr}.press .clef{display:none}}
+
+/* Sections */
+section.block{padding-block:clamp(64px,9vw,128px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head h2{font-size:clamp(40px,6vw,78px);letter-spacing:-.01em}
+.sec-head h2 em{font-style:italic}
+.sec-head p{color:var(--muted);max-width:56ch}
+.sec-head .eyebrow{margin-bottom:16px}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}}
+
+/* About */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:start}
+.about figure{margin:0;background:var(--photo-bg)}
+.about figure img{width:100%;aspect-ratio:2/3;object-fit:cover}
+.about .copy{min-width:0;display:grid;gap:22px;max-width:62ch}
+.about .copy p:first-of-type{font:400 clamp(22px,2.3vw,28px)/1.35 var(--f-display);color:var(--ink)}
+.about .copy p{color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:14px}
+.facts div{background:var(--bg);padding:18px 16px;min-width:0}
+.facts dt{font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:6px 0 0;font:400 19px/1.25 var(--f-display)}
+@media (max-width:820px){.about{grid-template-columns:1fr}.about figure{max-width:420px}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+
+/* Performances */
+.perf{background:var(--surface)}
+.venues{list-style:none;margin:0;padding:0;columns:2;column-gap:clamp(24px,5vw,72px)}
+.venues li{break-inside:avoid;display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.venues b{font:400 clamp(20px,2.2vw,26px)/1.2 var(--f-display)}
+.venues span{font:400 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media (max-width:700px){.venues{columns:1}.venues li{flex-direction:column;gap:2px}}
+.moments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:clamp(48px,6vw,80px)}
+.moment{border-top:1px solid var(--ink);padding-top:18px;min-width:0}
+.moment .yr{font:400 12px var(--f-mono);letter-spacing:.12em;color:var(--accent)}
+.moment h3{font-size:24px;line-height:1.2;margin:10px 0 10px}
+.moment p{color:var(--muted);font-size:15.5px}
+@media (max-width:900px){.moments{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.moments{grid-template-columns:1fr}}
+
+/* Press */
+.reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.review{background:var(--bg);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.review.lead{grid-column:1/-1}
+.review blockquote{margin:0;font:italic 400 clamp(22px,2.4vw,29px)/1.3 var(--f-display);text-wrap:balance}
+.review.lead blockquote{font-size:clamp(28px,3.6vw,44px);line-height:1.2}
+.review .src{margin-top:auto;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.review .src b{font:400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.review .src span{font-size:14px;color:var(--muted)}
+.review .stars{font-size:13px;letter-spacing:.2em;color:var(--accent)}
+@media (max-width:760px){.reviews{grid-template-columns:1fr}}
+.clippings{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(36px,4vw,56px);align-items:start}
+.clip{margin:0;min-width:0}
+.clip img{width:100%;height:auto;background:var(--photo-bg);border:1px solid var(--line)}
+.clip.snap img{aspect-ratio:4/3;object-fit:cover;object-position:50% 40%}
+.clip figcaption{margin-top:12px;font-size:14px;color:var(--muted);line-height:1.5}
+.clip figcaption b{display:block;font:400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:5px}
+@media (max-width:760px){.clippings{grid-template-columns:1fr}}
+.credit-note{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);max-width:68ch}
+
+/* Experience */
+.exp-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(28px,5vw,72px)}
+.exp-grid > *{min-width:0}
+.exp-grid h3{font-size:28px;margin-bottom:18px}
+.roles{width:100%;border-collapse:collapse;font-size:15.5px}
+.roles th{text-align:left;font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+.roles td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.roles td:first-child{font:400 19px/1.25 var(--f-display)}
+.roles td:last-child{color:var(--muted);font-size:14px}
+.roles-wrap{overflow-x:auto}
+.cv-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.cv-list li{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.cv-list .y{font:400 12px/1.9 var(--f-mono);color:var(--accent)}
+.cv-list b{font-weight:500;display:block}
+.cv-list small{color:var(--muted);font-size:14.5px}
+.mc{margin-top:36px}
+.mc p{color:var(--muted);font-size:15.5px;margin-top:8px}
+.mc .names{font:italic 400 21px/1.5 var(--f-display);color:var(--ink);margin-top:8px}
+@media (max-width:900px){.exp-grid{grid-template-columns:1fr}}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.5vw,32px)}
+.svc{display:flex;flex-direction:column;min-width:0}
+.svc figure{margin:0;background:var(--photo-bg);overflow:hidden}
+.svc figure img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.svc:hover figure img{transform:scale(1.03)}
+.svc .n{font:400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:22px}
+.svc h3{font-size:clamp(28px,2.8vw,36px);margin:8px 0 12px}
+.svc p{color:var(--muted);font-size:15.5px}
+.svc ul{list-style:none;margin:16px 0 22px;padding:0;font-size:15px}
+.svc li{padding:8px 0;border-top:1px solid var(--line)}
+.svc .btn{margin-top:auto;align-self:flex-start}
+@media (max-width:900px){.services{grid-template-columns:1fr}.svc figure img{aspect-ratio:3/2}}
+
+/* Testimonials */
+.words{background:var(--accent);color:var(--accent-ink)}
+.words .eyebrow{color:color-mix(in srgb,var(--accent-ink) 70%,transparent)}
+.quotes{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:36px}
+.quotes figure{margin:0;min-width:0;border-top:1px solid color-mix(in srgb,var(--accent-ink) 35%,transparent);padding-top:22px}
+.quotes blockquote{margin:0;font:italic 400 clamp(21px,2vw,25px)/1.35 var(--f-display)}
+.quotes figure:first-child blockquote{font-size:clamp(26px,2.8vw,34px);line-height:1.25}
+.quotes figcaption{margin-top:18px;font-size:14px;line-height:1.5}
+.quotes figcaption b{font-weight:600;display:block}
+.quotes figcaption span{opacity:.75}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* Enquire */
+.enq{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(28px,5vw,80px)}
+.enq > *{min-width:0}
+.direct{display:grid;gap:26px;align-content:start}
+.direct .addr{font:400 clamp(20px,2.4vw,28px)/1.2 var(--f-display);word-break:break-word}
+.copy-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.small-btn{font:500 13px var(--f-body);padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.small-btn:hover{border-color:var(--ink)}
+.direct dl{margin:0;display:grid;gap:14px}
+.direct dt{font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.direct dd{margin:4px 0 0}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.field{display:grid;gap:7px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{font:400 16px var(--f-body);color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;border-radius:0;width:100%;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:24px}
+select option{background:var(--bg);color:var(--ink)}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+.types{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
+.types legend{font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;padding:0}
+.chip{position:relative;font:400 14.5px var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink)}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-block;padding:10px 16px;border:1px solid var(--line);font-size:14.5px;cursor:pointer;transition:all .15s}
+.chip input:checked + span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:6px}
+.form-foot small{color:var(--muted);font-size:13.5px;max-width:42ch}
+.result{grid-column:1/-1;border:1px solid var(--accent);padding:20px;display:grid;gap:14px}
+.result pre{margin:0;white-space:pre-wrap;font:400 14px/1.55 var(--f-mono);background:var(--surface);padding:16px;max-height:280px;overflow:auto}
+.err{color:#B3261E;font-size:14px}
+@media (max-width:900px){.enq{grid-template-columns:1fr}}
+@media (max-width:560px){form{grid-template-columns:1fr}}
+
+/* Repertoire view */
+.rep-hero{padding-block:clamp(40px,6vw,88px) clamp(28px,4vw,48px);border-bottom:1px solid var(--line)}
+.rep-hero h1{font-size:clamp(52px,9vw,128px);letter-spacing:-.02em;line-height:.9;margin-top:18px}
+.rep-hero h1 em{font-style:italic}
+.rep-hero p{color:var(--muted);max-width:60ch;margin-top:22px}
+.rep-tools{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);padding-block:14px}
+.rep-tools .wrap{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:500 13.5px var(--f-body);padding:8px 13px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 280px}
+.search input{padding:8px 0}
+.count{font:400 12px var(--f-mono);color:var(--muted);letter-spacing:.08em;white-space:nowrap}
+.rep-body{padding-block:clamp(28px,4vw,56px) clamp(64px,8vw,112px)}
+.rep-group{margin-bottom:clamp(40px,5vw,64px)}
+.rep-group h2{font-size:clamp(30px,3.6vw,44px);display:flex;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.rep-group h2 small{font:400 12px var(--f-mono);letter-spacing:.1em;color:var(--muted)}
+.piece{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) 110px;gap:8px 24px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.piece .comp b{font-weight:600;display:block}
+.piece .comp span{font:400 12px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.piece .work .t{font:400 21px/1.3 var(--f-display)}
+.piece .work .t i{font-style:italic}
+.piece .work .s{color:var(--muted);font-size:14.5px;margin-top:3px}
+.piece .lang{font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-align:right}
+@media (max-width:700px){.piece{grid-template-columns:1fr auto}.piece .work{grid-column:1/-1;grid-row:2}.piece .lang{grid-row:1;grid-column:2}}
+.empty{color:var(--muted);padding:40px 0;font:italic 22px var(--f-display)}
+.rep-cta{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;border:1px solid var(--line);padding:clamp(22px,3vw,36px);margin-top:20px}
+.rep-cta p{font:400 clamp(22px,2.4vw,28px)/1.3 var(--f-display);max-width:34ch}
+
+footer{border-top:1px solid var(--line);padding-block:36px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted)}
+footer b{font:500 20px var(--f-display);color:var(--ink)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" data-route="home"><b>Joseph James</b><i>Baritone</i></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#performances">Performances</a>
+      <a href="#press">Press</a>
+      <a href="#experience">Experience</a>
+      <a href="#book">Weddings &amp; Events</a>
+      <a href="#management">Management</a>
+      <a href="#repertoire" id="repLink">Repertoire</a>
+      <a class="btn" href="#enquire">Enquire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="eyebrow">Welsh baritone · London · Available internationally</div>
+        <h1>Joseph <em>James</em></h1>
+        <div class="voice">Baritone</div>
+        <p class="lede">Trained at the Royal Welsh College of Music &amp; Drama and the Hochschule für Musik und Theater Leipzig, Joseph has sung from St Peter's Basilica to Carnegie Hall. He now performs at weddings, conferences and private events across the UK, Europe and further afield.</p>
+        <div class="ctas">
+          <a class="btn solid" href="#enquire">Enquire about a date</a>
+          <a class="btn" href="#repertoire">Browse repertoire</a>
+        </div>
+      </div>
+      <figure>
+        <img src="img/field.jpg" alt="Joseph James in a black roll-neck standing in a field of tall grasses" width="1066" height="1247">
+        <figcaption>Joseph James, baritone</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="press">
+    <div class="wrap">
+      <div class="clef" aria-hidden="true">𝄢</div>
+      <div>
+        <blockquote>“Irresistible in the bike-on role of the Western Union Boy.”</blockquote>
+        <cite>The Arts Desk ★★★★ · Britten's <i>Paul Bunyan</i>, Welsh National Youth Opera</cite>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="about">
+    <div class="wrap about">
+      <figure><img src="img/street.jpg" alt="Joseph James smiling, leaning against a metal mesh wall on a London street" loading="lazy" width="1066" height="1600"></figure>
+      <div class="copy">
+        <div class="eyebrow">About</div>
+        <p>A Swansea-born baritone with a warm, communicative voice and a career that has run from cathedral choir stalls to the artist side of the opera world.</p>
+        <p>He began as a treble in the choir of All Saints Church, Oystermouth, and became a founder member and regular soloist of the Ariosa Singers under Penny Ryan OBE, touring to Dublin, Prague, Paris, Barcelona, Florence, Venice and Rome. He went on to the Royal Welsh College of Music &amp; Drama, graduating with a BMus in Vocal Performance, and spent an Erasmus semester at the Hochschule für Musik und Theater “Felix Mendelssohn Bartholdy” in Leipzig with Prof. Roland Schubert.</p>
+        <p>His Western Union Boy in Welsh National Youth Opera's <i>Paul Bunyan</i> at the Wales Millennium Centre, alongside the recorded voice of Stephen Fry and 150 singers from Only Boys Aloud, drew notices in The Arts Desk and Wales Arts Review.</p>
+        <p>Alongside performing, he has worked in artist management at IMG Artists in New York and in casting at Welsh National Opera. That gives him an unusual view of both sides of the stage, which he now brings to his own performing and to the singers he advises.</p>
+        <dl class="facts">
+          <div><dt>Voice</dt><dd>Baritone</dd></div>
+          <div><dt>Languages sung</dt><dd>English, Italian, German, French</dd></div>
+          <div><dt>Based</dt><dd>London, available internationally</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block perf" id="performances">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Performances</div><h2>Where the voice <em>has been</em></h2></div>
+        <p>Solo, oratorio, opera and choral work in cathedrals, concert halls and palaces across Europe, the US and Australia.</p>
+      </div>
+      <ul class="venues">
+        <li><b>St Peter's Basilica</b><span>Vatican City</span></li>
+        <li><b>Carnegie Hall</b><span>New York</span></li>
+        <li><b>Sydney Opera House</b><span>Sydney</span></li>
+        <li><b>Chartres Cathedral</b><span>France</span></li>
+        <li><b>Christ Church Cathedral</b><span>Dublin</span></li>
+        <li><b>Montserrat Monastery</b><span>Catalonia</span></li>
+        <li><b>Pisa Cathedral</b><span>Tuscany</span></li>
+        <li><b>Rheinsberg Palace</b><span>Germany</span></li>
+        <li><b>Wales Millennium Centre</b><span>Cardiff</span></li>
+        <li><b>St David's Hall</b><span>Cardiff</span></li>
+        <li><b>Dora Stoutzker Hall</b><span>Cardiff</span></li>
+        <li><b>Weston Gallery, RWCMD</b><span>Cardiff</span></li>
+      </ul>
+      <div class="moments">
+        <article class="moment"><div class="yr">2012</div><h3>Accompanied by Karl Jenkins</h3><p>Sang in Jenkins's Mass for Peace, including the Ave Verum duet, with the composer himself at the piano.</p></article>
+        <article class="moment"><div class="yr">2012</div><h3>St David's Day concert</h3><p>Performed at a St David's Day concert attended by the then Prince of Wales.</p></article>
+        <article class="moment"><div class="yr">2012</div><h3>Kathleen Ferrier Bursary</h3><p>Chosen to represent the Royal Welsh College in the Kathleen Ferrier Young Singers Bursary in Blackburn.</p></article>
+        <article class="moment"><div class="yr">2014</div><h3>Britten's War Requiem</h3><p>With the RWCMD chorus at St David's Hall for the First World War centenary, alongside Simon Keenlyside.</p></article>
+        <article class="moment"><div class="yr">2014</div><h3>Leipzig &amp; eastern Germany</h3><p>Concerts across eastern Germany during his Erasmus semester, including Rheinsberg Palace.</p></article>
+        <article class="moment"><div class="yr">2014</div><h3>Recital with harp</h3><p>Third-year recital with harpist Meg Morris: Mozart, Schubert, Wolf, Hahn, Finzi, Barber and Bernstein.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="press">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Press</div><h2>What the critics <em>wrote</em></h2></div>
+        <p>Reviews of Welsh National Youth Opera's <i>Paul Bunyan</i> at the Wales Millennium Centre, and of earlier stage work in Wales.</p>
+      </div>
+      <div class="reviews">
+        <figure class="review lead">
+          <blockquote>“[Joseph James] is irresistible in the bike-on role of the Western Union Boy with his life-changing telegrams, delivered in a kind of fractured Al Bowlly style.”</blockquote>
+          <div class="src"><b>The Arts Desk</b><span>Stephen Walsh · <i>Paul Bunyan</i>, WNO Youth Opera, 2013</span><span class="stars">★★★★</span></div>
+        </figure>
+        <figure class="review">
+          <blockquote>“[Joseph James] as the Western Union Boy had an exceptional turn-on-a-bicycle.”</blockquote>
+          <div class="src"><b>Wales Arts Review</b><span>Steph Power · <i>Paul Bunyan</i>, 2013</span></div>
+        </figure>
+        <figure class="review">
+          <blockquote>“The young singers were a joy to hear and to behold, showing great levels of commitment and vitality with some wonderful acting and neatly-judged humour.”</blockquote>
+          <div class="src"><b>Wales Arts Review</b><span>On the <i>Paul Bunyan</i> cast</span></div>
+        </figure>
+        <figure class="review">
+          <blockquote>“There are accomplished performances too from Dave Smith, Mark James, Tom Crowther, Linsey Passmore, [Joseph James] and Jack Roberts.”</blockquote>
+          <div class="src"><b>Theatre in Wales</b><span>Vivienne Buckley · <i>Moll Flanders</i>, Taliesin, 2011</span></div>
+        </figure>
+        <figure class="review">
+          <blockquote>“My favourite part was watching the George on the scooter.”</blockquote>
+          <div class="src"><b>Llanharan Primary School</b><span>Edward, Year 5 · <i>Dr Ferret's Bad Medicine Roadshow</i>, 2013</span></div>
+        </figure>
+      </div>
+
+      <div class="clippings">
+        <figure class="clip">
+          <img src="img/press-cardifflife.jpg" alt="Cardiff Life magazine page headed Invitation Only, with photographs from a classical evening at Caerphilly Castle" loading="lazy" width="460" height="589">
+          <figcaption><b>Cardiff Life · Invitation Only</b>“Sing it loud”: Seraph Estates and students of the Royal Welsh College of Music &amp; Drama at Caerphilly Castle, an evening of classical music in aid of the Tŷ Hafan children's hospice.</figcaption>
+        </figure>
+        <figure class="clip snap">
+          <img src="img/backstage.jpg" alt="Joseph James laughing in black tie with two colleagues at a music industry evening" loading="lazy" width="1400" height="1122">
+          <figcaption><b>Off stage</b>With colleagues at an industry evening. A career spent between the stage, the casting room and artist management.</figcaption>
+        </figure>
+      </div>
+      <p class="credit-note">These productions were reviewed under the name Joseph Gorvett. Quotations are reproduced as published; the name in square brackets replaces the credit as it originally appeared.</p>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Experience</div><h2>Roles, training <em>&amp; teachers</em></h2></div>
+        <p>Opera and operetta from Mozart to Britten, oratorio from Handel to Mahler, and a conservatoire training in Cardiff and Leipzig.</p>
+      </div>
+      <div class="exp-grid">
+        <div>
+          <h3>Opera &amp; operetta</h3>
+          <div class="roles-wrap">
+            <table class="roles">
+              <thead><tr><th>Role</th><th>Work</th><th>Company</th></tr></thead>
+              <tbody>
+                <tr><td>Western Union Boy</td><td>Britten, <i>Paul Bunyan</i></td><td>Welsh National Youth Opera</td></tr>
+                <tr><td>Le Dancaïre</td><td>Bizet, <i>Carmen</i></td><td>Opera'r Ddraig</td></tr>
+                <tr><td>Aecus</td><td>Offenbach, <i>Orpheus in the Underworld</i></td><td>Opera'r Ddraig</td></tr>
+                <tr><td>First Priest</td><td>Mozart, <i>The Magic Flute</i></td><td>RWCMD</td></tr>
+                <tr><td>George</td><td><i>Dr Ferret's Bad Medicine Roadshow</i></td><td>RWCMD</td></tr>
+                <tr><td>Don Giovanni, Leporello, Masetto</td><td>Mozart, <i>Don Giovanni</i> (scenes)</td><td>RWCMD</td></tr>
+                <tr><td>Maximilian</td><td>Bernstein, <i>Candide</i> (scenes)</td><td>Opera'r Ddraig</td></tr>
+                <tr><td>Frank Maurrant</td><td>Weill, <i>Street Scene</i> (scenes)</td><td>Opera'r Ddraig</td></tr>
+                <tr><td>Lockit</td><td>Gay &amp; Pepusch, <i>The Beggar's Opera</i> (scenes)</td><td>RWCMD</td></tr>
+                <tr><td>Chorus</td><td>Mozart, <i>The Marriage of Figaro</i></td><td>RWCMD</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mc">
+            <div class="eyebrow">Masterclasses &amp; workshops with</div>
+            <div class="names">Rebecca Evans, Roderick Williams, Christopher Maltman, Jonathan Lemalu, Donald Maxwell, Suzanne Murphy, John Fisher</div>
+            <p>Guest soloist with Welsh male voice choirs including the Morriston Orpheus and Dunvant. Member of the harp-and-voices trio The Hiraeth Ensemble.</p>
+          </div>
+        </div>
+        <div>
+          <h3>Training</h3>
+          <ul class="cv-list">
+            <li><span class="y">2011–15</span><div><b>Royal Welsh College of Music &amp; Drama</b><small>BMus (Hons) Vocal Performance. Teachers: Adrian Thompson, Jeff Howard</small></div></li>
+            <li><span class="y">2014</span><div><b>HMT “Felix Mendelssohn Bartholdy”, Leipzig</b><small>Erasmus exchange with Prof. Roland Schubert</small></div></li>
+            <li><span class="y">ATCL</span><div><b>Trinity Guildhall Diploma in Singing</b><small>Plus Grade 8 Singing with Distinction</small></div></li>
+            <li><span class="y">Early</span><div><b>Penny Ryan OBE</b><small>Seven years of singing and choral training; soloist with the Ariosa Singers</small></div></li>
+          </ul>
+          <h3 style="margin-top:40px">Beyond the stage</h3>
+          <ul class="cv-list">
+            <li><span class="y">NYC</span><div><b>IMG Artists</b><small>Artist management, New York</small></div></li>
+            <li><span class="y">Cardiff</span><div><b>Welsh National Opera</b><small>Casting, and Project Writer for the WNO Youth Opera alumni history</small></div></li>
+            <li><span class="y">Now</span><div><b>Judgementally Good Creative</b><small>Founder and creative director, brand and growth strategy</small></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="book" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Book Joseph</div><h2>For the day <em>itself</em></h2></div>
+        <p>Live classical singing for ceremonies, receptions, conferences and private occasions, with programmes built around your day. Available across the UK and Europe, and for international bookings.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <figure><img src="img/garden.jpg" alt="Joseph James in black tie among white agapanthus in an English garden" loading="lazy" width="1200" height="1600"></figure>
+          <div class="n">Weddings</div>
+          <h3>Ceremony to first dance</h3>
+          <p>A voice for the moments people remember: the walk down the aisle, the signing, the toast.</p>
+          <ul>
+            <li>Ceremony music, processional and signing of the register</li>
+            <li>Drinks reception and wedding breakfast sets</li>
+            <li>Arias, art song, musical theatre and requests</li>
+            <li>Destination weddings across Europe and further afield</li>
+          </ul>
+          <button class="btn" data-enquire="Wedding">Enquire about a wedding</button>
+        </article>
+        <article class="svc">
+          <figure><img src="img/terrace.jpg" alt="Joseph James in black tie on a stone terrace above vineyards in southern Italy" loading="lazy" width="1600" height="1566"></figure>
+          <div class="n">Conferences &amp; events</div>
+          <h3>Openings, galas &amp; dinners</h3>
+          <p>A short, polished set that changes the energy in a room, planned around your running order.</p>
+          <ul>
+            <li>Conference openings and keynote moments</li>
+            <li>Gala dinners, awards and brand launches</li>
+            <li>Private parties, anniversaries and memorials</li>
+            <li>Programmes tailored to theme, venue and audience</li>
+          </ul>
+          <button class="btn" data-enquire="Conference or event">Enquire about an event</button>
+        </article>
+        <article class="svc" id="management">
+          <figure><img src="img/smile.jpg" alt="Joseph James laughing, hand at his chin, in a dark jacket" loading="lazy" width="1600" height="1394"></figure>
+          <div class="n">Talent management &amp; planning</div>
+          <h3>Careers, planned properly</h3>
+          <p>Career planning for singers and performers, drawing on artist management at IMG Artists, casting at WNO and brand strategy.</p>
+          <ul>
+            <li>Audition strategy and repertoire planning</li>
+            <li>Season and career roadmaps</li>
+            <li>Biography, materials and profile positioning</li>
+            <li>One-off sessions or ongoing support</li>
+          </ul>
+          <button class="btn" data-enquire="Talent management">Enquire about management</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block words" id="testimonials">
+    <div class="wrap">
+      <div class="eyebrow">In their words</div>
+      <div class="quotes">
+        <figure>
+          <blockquote>“The voice has an attractive timbre and his communication skills are very good. He connects with any audience.”</blockquote>
+          <figcaption><b>Penny Ryan OBE</b><span>Singing teacher and founder of the Ariosa Singers</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“An exemplary student… very driven and focused, determined to carve out a successful and satisfying career.”</blockquote>
+          <figcaption><b>Zoe Smith</b><span>Head of Ensemble Performance, Royal Welsh College of Music &amp; Drama</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“He will work tirelessly for his artists… empathetic to the artist's unique and often complex needs.”</blockquote>
+          <figcaption><b>Amber Wagner</b><span>On working with Joseph in artist management</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="enquire">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Enquire</div><h2>Tell me about <em>your date</em></h2></div>
+        <p>Share a few details and your enquiry is drafted as an email, ready to send. Most enquiries get a reply within two working days.</p>
+      </div>
+      <div class="enq">
+        <div class="direct">
+          <div>
+            <div class="eyebrow">Email</div>
+            <div class="addr" id="emailText">info@judgementallygood.com</div>
+            <div class="copy-row"><button class="small-btn" id="copyEmail" type="button">Copy address</button><span class="count" id="copyMsg" aria-live="polite"></span></div>
+          </div>
+          <dl>
+            <div><dt>Based</dt><dd>London, United Kingdom</dd></div>
+            <div><dt>Travels for</dt><dd>Concerts, weddings and events across the UK, Europe and internationally</dd></div>
+            <div><dt>Useful to include</dt><dd>Date, venue, guest numbers, and any pieces you already love</dd></div>
+          </dl>
+        </div>
+        <form id="enqForm" novalidate>
+          <fieldset class="types">
+            <legend>Enquiry type</legend>
+            <label class="chip"><input type="radio" name="type" id="t-wed" value="Wedding" checked><span>Wedding</span></label>
+            <label class="chip"><input type="radio" name="type" id="t-evt" value="Conference or event"><span>Conference or event</span></label>
+            <label class="chip"><input type="radio" name="type" id="t-mgmt" value="Talent management"><span>Talent management</span></label>
+            <label class="chip"><input type="radio" name="type" id="t-other" value="Something else"><span>Something else</span></label>
+          </fieldset>
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-date">Date</label><input id="f-date" name="date" type="date"></div>
+          <div class="field"><label for="f-venue">Venue or city</label><input id="f-venue" name="venue" placeholder="e.g. Hampstead, London"></div>
+          <div class="field full"><label for="f-msg">Details</label><textarea id="f-msg" name="msg" placeholder="Guests, timings, the moments you'd like music for, pieces you love…"></textarea></div>
+          <div class="form-foot">
+            <small>Nothing is sent from this page. You'll get a ready-to-send email to copy into your inbox.</small>
+            <button class="btn solid" type="submit">Draft my enquiry</button>
+          </div>
+          <div class="err" id="formErr" hidden></div>
+          <div class="result" id="result" hidden>
+            <div class="eyebrow">Your enquiry, ready to send to <span id="resTo"></span></div>
+            <pre id="resText"></pre>
+            <div class="copy-row">
+              <button class="btn solid" type="button" id="copyEnq">Copy enquiry</button>
+              <a class="btn" id="mailLink" href="#">Open in email app</a>
+              <span class="count" id="copyEnqMsg" aria-live="polite"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="repertoire-view" hidden>
+  <section class="rep-hero">
+    <div class="wrap">
+      <div class="eyebrow">Repertoire catalogue</div>
+      <h1>Selected <em>repertoire</em></h1>
+      <p>Arias, roles, art song and oratorio Joseph has performed, with composers' dates. Wedding and event programmes are built to order, so ask about anything you don't see here.</p>
+    </div>
+  </section>
+  <div class="rep-tools">
+    <div class="wrap">
+      <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+      <div class="search"><label for="repSearch" class="count">Search</label><input id="repSearch" type="search" placeholder="Composer, work, language"></div>
+    </div>
+  </div>
+  <div class="rep-body">
+    <div class="wrap">
+      <div class="count" id="repCount" style="margin-bottom:24px"></div>
+      <div id="repList"></div>
+      <div class="rep-cta">
+        <p>Have a piece in mind for your ceremony or event?</p>
+        <a class="btn solid" href="#enquire">Ask about a piece</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Joseph James</b>
+    <span>Baritone · London · Available internationally</span>
+    <span>Weddings · Conferences · Talent management</span>
+  </div>
+</footer>
+
+<script>
+const CONTACT_EMAIL = "info@judgementallygood.com";
+
+const CATS = ["Opera & operetta","Art song","Oratorio & sacred"];
+const REP = [
+  // Opera & operetta
+  {c:"Opera & operetta",comp:"W. A. Mozart",d:"1756–1791",work:"Le nozze di Figaro",piece:"“La vendetta” (Bartolo)",lang:"Italian"},
+  {c:"Opera & operetta",comp:"W. A. Mozart",d:"1756–1791",work:"Don Giovanni",piece:"Don Giovanni, Leporello, Masetto (scenes)",lang:"Italian"},
+  {c:"Opera & operetta",comp:"W. A. Mozart",d:"1756–1791",work:"Die Zauberflöte",piece:"First Priest",lang:"German"},
+  {c:"Opera & operetta",comp:"Georges Bizet",d:"1838–1875",work:"Carmen",piece:"Le Dancaïre",lang:"French"},
+  {c:"Opera & operetta",comp:"Jacques Offenbach",d:"1819–1880",work:"Orpheus in the Underworld",piece:"Aecus",lang:"English"},
+  {c:"Opera & operetta",comp:"Leonard Bernstein",d:"1918–1990",work:"Candide",piece:"“It Must Be So” (Candide's Meditation); Maximilian",lang:"English"},
+  {c:"Opera & operetta",comp:"Kurt Weill",d:"1900–1950",work:"Street Scene",piece:"Frank Maurrant (scenes)",lang:"English"},
+  {c:"Opera & operetta",comp:"John Gay & J. C. Pepusch",d:"1728",work:"The Beggar's Opera",piece:"Lockit (scenes)",lang:"English"},
+  {c:"Opera & operetta",comp:"Benjamin Britten",d:"1913–1976",work:"Paul Bunyan",piece:"Western Union Boy",lang:"English"},
+  // Art song
+  {c:"Art song",comp:"Franz Schubert",d:"1797–1828",work:"Romanze",piece:"from Rosamunde, Fürstin von Zypern",lang:"German"},
+  {c:"Art song",comp:"Hugo Wolf",d:"1860–1903",work:"Verborgenheit",piece:"from the Mörike-Lieder",lang:"German"},
+  {c:"Art song",comp:"Reynaldo Hahn",d:"1874–1947",work:"L'heure exquise",piece:"Verlaine setting",lang:"French"},
+  {c:"Art song",comp:"Stefano Donaudy",d:"1879–1925",work:"Vorrei poterti odiare",piece:"from 36 Arie di stile antico",lang:"Italian"},
+  {c:"Art song",comp:"P. I. Tchaikovsky",d:"1840–1893",work:"None but the lonely heart",piece:"Op. 6 No. 6",lang:"English"},
+  {c:"Art song",comp:"Gerald Finzi",d:"1901–1956",work:"It was a lover and his lass",piece:"from Let Us Garlands Bring",lang:"English"},
+  {c:"Art song",comp:"Samuel Barber",d:"1910–1981",work:"Sure on this shining night",piece:"Op. 13 No. 3",lang:"English"},
+  // Oratorio & sacred
+  {c:"Oratorio & sacred",comp:"G. F. Handel",d:"1685–1759",work:"Messiah",piece:"Wales Millennium Centre",lang:"English"},
+  {c:"Oratorio & sacred",comp:"G. F. Handel",d:"1685–1759",work:"The Choice of Hercules",piece:"Dora Stoutzker Hall",lang:"English"},
+  {c:"Oratorio & sacred",comp:"Joseph Haydn",d:"1732–1809",work:"The Creation",piece:"All Saints Church, Oystermouth",lang:"English"},
+  {c:"Oratorio & sacred",comp:"Giuseppe Verdi",d:"1813–1901",work:"Messa da Requiem",piece:"St David's Hall",lang:"Latin"},
+  {c:"Oratorio & sacred",comp:"Gabriel Fauré",d:"1845–1924",work:"Requiem",piece:"Chartres Cathedral",lang:"Latin"},
+  {c:"Oratorio & sacred",comp:"Gustav Mahler",d:"1860–1911",work:"Symphony No. 2 “Resurrection”",piece:"St David's Hall",lang:"German"},
+  {c:"Oratorio & sacred",comp:"Sergei Prokofiev",d:"1891–1953",work:"Alexander Nevsky",piece:"St David's Hall",lang:"Russian"},
+  {c:"Oratorio & sacred",comp:"Benjamin Britten",d:"1913–1976",work:"War Requiem",piece:"St David's Hall, with Simon Keenlyside",lang:"English / Latin"},
+  {c:"Oratorio & sacred",comp:"Karl Jenkins",d:"b. 1944",work:"Mass for Peace & Ave Verum",piece:"With the composer at the piano",lang:"Latin / English"},
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+
+/* ---------- Routing ---------- */
+const home = $("#home"), rep = $("#repertoire-view"), nav = $("#nav"), menuBtn = $("#menuBtn");
+function route(){
+  const h = location.hash.slice(1);
+  const isRep = h === "repertoire";
+  home.hidden = isRep; rep.hidden = !isRep;
+  $("#repLink").setAttribute("aria-current", isRep ? "page" : "false");
+  if (isRep) { window.scrollTo(0,0); return; }
+  if (h) { const el = document.getElementById(h); if (el) requestAnimationFrame(()=>el.scrollIntoView()); }
+}
+window.addEventListener("hashchange", route);
+nav.addEventListener("click", e => { if (e.target.closest("a")) { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); } });
+menuBtn.addEventListener("click", () => { const o = nav.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", String(o)); });
+
+/* ---------- Repertoire ---------- */
+let activeCat = "All";
+const filters = $("#filters");
+["All", ...CATS].forEach(c => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = c; b.setAttribute("aria-pressed", String(c === activeCat));
+  b.addEventListener("click", () => { activeCat = c; [...filters.children].forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderRep(); });
+  filters.appendChild(b);
+});
+$("#repSearch").addEventListener("input", renderRep);
+function renderRep(){
+  const q = $("#repSearch").value.trim().toLowerCase();
+  const items = REP.filter(r => (activeCat === "All" || r.c === activeCat) &&
+    (!q || [r.comp,r.work,r.piece,r.lang,r.c].join(" ").toLowerCase().includes(q)));
+  $("#repCount").textContent = items.length + (items.length === 1 ? " work" : " works");
+  if (!items.length) { $("#repList").innerHTML = '<p class="empty">No matches. Try a composer or a language, or ask about a specific piece.</p>'; return; }
+  $("#repList").innerHTML = CATS.map(cat => {
+    const g = items.filter(r => r.c === cat);
+    if (!g.length) return "";
+    return `<div class="rep-group"><h2>${esc(cat)} <small>${g.length}</small></h2>` + g.map(r => `
+      <div class="piece">
+        <div class="comp"><b>${esc(r.comp)}</b><span>${esc(r.d)}</span></div>
+        <div class="work"><div class="t"><i>${esc(r.work)}</i></div><div class="s">${esc(r.piece)}</div></div>
+        <div class="lang">${esc(r.lang)}</div>
+      </div>`).join("") + `</div>`;
+  }).join("");
+}
+renderRep();
+
+/* ---------- Contact ---------- */
+$("#emailText").textContent = CONTACT_EMAIL;
+$("#resTo").textContent = CONTACT_EMAIL;
+async function copyText(text, msgEl, fallbackEl){
+  try { await navigator.clipboard.writeText(text); msgEl.textContent = "Copied"; }
+  catch(e){
+    const r = document.createRange(); r.selectNodeContents(fallbackEl);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    msgEl.textContent = "Selected. Press Ctrl+C or ⌘C to copy";
+  }
+  setTimeout(()=>{ msgEl.textContent = ""; }, 3500);
+}
+$("#copyEmail").addEventListener("click", () => copyText(CONTACT_EMAIL, $("#copyMsg"), $("#emailText")));
+
+document.querySelectorAll("[data-enquire]").forEach(b => b.addEventListener("click", () => {
+  const v = b.dataset.enquire;
+  const r = document.querySelector(`input[name="type"][value="${v}"]`); if (r) r.checked = true;
+  location.hash = "enquire"; route();
+  setTimeout(()=>$("#f-name").focus({preventScroll:true}), 400);
+}));
+
+$("#enqForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target.elements, err = $("#formErr");
+  const type = e.target.querySelector('input[name="type"]:checked').value, name = f.name.value.trim(), email = f.email.value.trim();
+  if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
+    err.hidden = false; err.textContent = !name ? "Add your name so Joseph knows who to reply to." : "Add a valid email address so Joseph can reply.";
+    (!name ? f.name : f.email).focus(); return;
+  }
+  err.hidden = true;
+  const dateStr = f.date.value ? new Date(f.date.value + "T12:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}) : "To be confirmed";
+  const subject = `${type} enquiry from ${name}`;
+  const body = `Hello Joseph,
+
+I'd like to enquire about: ${type}
+
+Date: ${dateStr}
+Venue / city: ${f.venue.value.trim() || "To be confirmed"}
+
+${f.msg.value.trim() || "(No further details yet)"}
+
+Best wishes,
+${name}
+${email}`;
+  $("#resText").textContent = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
+  $("#mailLink").href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  $("#result").hidden = false;
+  $("#result").scrollIntoView({block:"nearest"});
+});
+$("#copyEnq").addEventListener("click", () => copyText($("#resText").textContent, $("#copyEnqMsg"), $("#resText")));
+
+route();
+</script>
+
+</body>
+</html>
