@@ -263,6 +263,29 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--a
 footer{border-top:1px solid var(--line);padding-block:36px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted)}
 footer b{font:500 20px var(--f-display);color:var(--ink)}
+
+/* mobile refinements */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+[id]{scroll-margin-top:88px}
+@media (max-width:900px){
+  [id]{scroll-margin-top:80px}
+  .mark{padding-block:11px}
+  .menu-btn{min-height:44px;padding:11px 15px}
+  .small-btn{min-height:44px;padding:12px 16px}
+  .chip span{min-height:44px;display:inline-flex;align-items:center}
+  .filters button{min-height:44px;padding:11px 14px}
+  .nav a{padding:15px 0}
+  .btn{padding:16px 22px}
+  .eyebrow,label,.facts dt,.direct dt,.roles th,.types legend,.svc .n,.moment .yr,
+  .review .src b,.clip figcaption b,.count,.piece .lang,.piece .comp span,
+  .hero figcaption,.rep-group h2 small,.venues span,.cv-list .y{font-size:12px}
+  .quotes figcaption span,.review .src span{font-size:14.5px}
+}
+@media (max-width:420px){
+  .filters{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut)}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{flex:0 0 auto;white-space:nowrap}
+}
 </style>
 
 <header class="top">
